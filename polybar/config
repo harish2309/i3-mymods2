@@ -14,7 +14,6 @@
 ;==========================================================
 
 [color]
-
 trans = #00000000
 white = #FFFFFF
 black = #000000
@@ -59,8 +58,8 @@ brown = #6d4c41
 grey = #757575
 blue-gray = #546e7a
 
-;==========================================================
 
+;==========================================================
 [bar/mainbar-i3]
 width = 100%
 height = 48
@@ -83,15 +82,15 @@ enable-ipc = true
 background = ${xrdb:color0:#00ff00}
 foreground = ${color.fg} 
 
-;==========================================================
 
+;==========================================================
 font-0 = "Fantasque Sans Mono:pixelsize=13;4"
+;font-0 = "M+ 1m:pixelsize=12;4"
 font-1 = "Iosevka Nerd Font:pixelsize=13;4"
 font-2 = "Weather Icons:size=13;4"
 font-3 ="Symbols Nerd Font:size=13;4"
-
-
 ;==========================================================
+
 
 cursor-click = pointer
 ;cursor-scroll = ns-resize
@@ -99,15 +98,13 @@ cursor-click = pointer
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-;== Module Location ========================================================
 
-modules-left = i3 data temperature nvidia xwindow 
+;== Module Location ========================================================
+modules-left = i3  temperature nvidia data reddit youtube terminal xwindow 
 modules-center =  date
 modules-right =  compton weather filesystem  pkg volume    powermenu  
- 
 ;== Modules ========================================================
 
-;google github reddit facebook youtube
 
 [module/i3]
 type = internal/i3
@@ -128,12 +125,12 @@ label-focused =  %name%
 ;label-focused = 
 ;label-focused = 
 
-label-indicator-padding = 2
+label-indicator-padding = 1
 label-indicator-background = #BBBBBB
 label-indicator-underline = #FF0000
 
 label-focused-foreground = ${color.fg}
-label-focused-padding = 2
+label-focused-padding = 1
 label-focused-background = ${color.shade2}
 ;label-focused-underline = 
 ;label-focused-overline= #FF0000
@@ -146,32 +143,31 @@ label-unfocused-padding = 1
 label-visible = %name
 ;label-visible = 
 label-visible-foregroud = ${color.fg}
-label-visible-padding = 2
-label-visible-background = #BBBBBB
-label-visible-underline = #FF0000
-;label-visible-overline = #FF0000
+label-visible-padding = 1
+label-visible-background = ${color.shade2}
 
 label-urgent =  %name%
 ;label-urgent = 
 ;label-urgent = 
 ;label-urgent = 
 ;label-urgent = 
-label-urgent-padding = 2
-;label-urgent-foreground = #FA8007
+label-urgent-padding = 1
 label-urgent-foreground = #FF0000
 
-;;;;;;;;;;;:::::LEFT;;;;;;;;;;;;;;;;;
+
+;=====================LEFT=====================
 [module/data]
 type = custom/script
 exec = ~/.config/polybar/data.sh
 interval = 2
-format-prefix = "data "
+format-prefix = " data "
 format-background = ${color.shade3}
 format-padding = 2
 
+
 [module/temperature]
 type = internal/temperature
-interval = 1
+interval = 2
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
 warn-temperature = 60
 units = true
@@ -183,6 +179,7 @@ label-warn-foreground = #f00
 format-background = ${color.shade3}
 format-padding = 2
 
+
 [module/nvidia]
 type = custom/script
 exec = ~/.config/polybar/gpu.sh
@@ -191,29 +188,29 @@ format-prefix = " gpu "
 format-background = ${color.shade3}
 format-padding = 2
 
+
 [module/xwindow]
 type = internal/xwindow
 ;label = %title:0:30:...%
 label = %title:0:30:...%  %{B- -o -u}
 label-padding=2
+;label-foreground = ${color.shade7}
 
 
-
-
-;;;;;;;;;;;:::::CENTER;;;;;;;;;;;;;;;;;
+;=====================CENTER=====================
 [module/date]
 type = internal/date
 interval = 30
 label =  %time%
 label-padding = 2
 label-background = ${color.shade4}
-time =  %I:%M %p
-time-alt =  %Y-%m-%d
+time =  %a %b %d, %I:%M %p 
+time-alt =  %m-%d-%Y
 
 
 
 
-;;;;;;;;;;;:::::RIGHT;;;;;;;;;;;;;;;;;
+;=====================RIGHT=====================
 [module/compton]
 type = custom/script
 exec = ~/.config/polybar/compton.sh
@@ -226,7 +223,7 @@ format-padding = 2
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/openweathermap-detailed.sh
-interval = 300
+interval = 60
 format-padding = 2
 format-background = ${color.shade6}
 label-font = 1
@@ -234,10 +231,11 @@ label-font = 1
 [module/filesystem]
 type = internal/fs
 mount-0 = /
-interval = 10
+interval = 90
 fixed-values = true
-label-mounted = /: %percentage_used%% used
+label-mounted = %used%/%total%
 format-mounted = <label-mounted>
+format-mounted-prefix = " " 
 format-mounted-background = ${color.shade6}
 format-mounted-padding = 2
 
@@ -281,38 +279,46 @@ click-right = ~/.config/polybar/pmenu_1
 type = custom/text
 content = 
 content-padding = 2
-content-foreground = ${color.fg-alt}
+;content-foreground = ${color.fg-alt}
 click-left = xdg-open https://www.google.com/ 
 
 [module/github]
 type = custom/text
 content = 
 content-padding = 2
-content-foreground = ${color.fg-alt}
+;content-foreground = ${color.fg-alt}
 click-left = xdg-open https://www.github.com/ 
 
 [module/reddit]
 type = custom/text
 content = 
 content-padding = 2
-content-foreground = ${color.fg-alt}
+;content-foreground = ${color.fg-alt}
 click-left = xdg-open https://www.reddit.com/
 
 [module/facebook]
 type = custom/text
 content = 
 content-padding = 2
-content-foreground = ${color.fg-alt}
+;content-foreground = ${color.fg-alt}
 click-left = xdg-open https://www.facebook.com/
 
 [module/youtube]
 type = custom/text
 content = 
 content-padding = 2
-content-foreground = ${color.fg-alt}
+;content-foreground = ${color.fg-alt}
 click-left = xdg-open https://www.youtube.com/
 
-;==========================================================
+[module/terminal]
+type = custom/text
+content = 
+content-padding = 2
+;content-foreground = ${color.fg-alt}
+click-left = /usr/bin/uxterm -geometry 72x24+2500+750
+
+
+;=====================OTHER STUFF;=====================
 
 [module/mpd]
 type = internal/mpd
