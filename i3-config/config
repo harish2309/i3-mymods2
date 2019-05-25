@@ -45,7 +45,7 @@ bindsym $mod+z exec --no-startup-id rofi -show drun -lines 5 -columns 3 &
 # exec --no-startup-id volumeicon
 # bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 exec --no-startup-id pulseaudio --start 
-exec --no-startup-id pa-applet
+exec --no-startup-id pasystray
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
@@ -56,14 +56,14 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+bindsym $mod+F2 exec chromium &
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
 #bindsym $mod+t exec --no-startup-id pkill compton
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+t exec --no-startup-id exec terminal
+bindsym $mod+t exec --no-startup-id exec uxterm -geometry 72x24+2500+750
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -217,7 +217,11 @@ for_window [class="Xfburn"] floating enable
 for_window [class="URxvt"] floating enable
 for_window [class="Mousepad"] floating enable
 for_window [class="feh"] floating enable
-
+for_window [class="TelegramDesktop"] floating enable
+for_window [class="Whatsie"] floating enable
+for_window [class="UXTerm"] floating enable
+for_window [class="Slack"] floating enable
+for_window [class="qBittorrent"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -276,6 +280,10 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
+# exec --no-startup-id blueman-applet
+# exec_always --no-startup-id sbxkb
+# exec --no-startup-id start_conky_grey
+# exec --no-startup-id start_conky_green
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id wal -R; sleep 1; compton -b --config ~/.config/compton.conf 
 exec --no-startup-id manjaro-hello
@@ -283,74 +291,34 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_grey
-# exec --no-startup-id start_conky_green
+exec --no-startup-id telegram-desktop
+exec --no-startup-id whatsie
+exec --no-startup-id slack
+exec --no-startup-id qbittorrent
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # Color palette used for the terminal ( ~/.Xresources file )
-# Colors are gathered based on the documentation:
-# https://i3wm.org/docs/userguide.html#xresources
-# Change the variable name at the place you want to match the color
-# of your terminal like this:
-# [example]
-# If you want your bar to have the same background color as your 
-# terminal background change the line 362 from:
-# background #14191D
-# to:
-# background $term_background
-# Same logic applied to everything else.
-
 
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
-set_from_resource $bl i3wm.color1 #f0f0f0
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-#	i3bar_command i3bar
-#	status_command i3status
-#	position bottom
-#	height 40
+set_from_resource $bl i3wm.color3 #f0f0f0
+set_from_resource $bs i3wm.color1 #f0f0f0
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-#	bindsym button4 nop
-#	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-#	strip_workspace_numbers yes
-
-#    colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
-
-#                      border  backgr. text
-#        focused_workspace  #F9FAF9 #16a085 #292F34
-#        active_workspace   #595B5B #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16a085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16a085 #FDF6E3 #E5201D
-#    }
-#}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-	# Theme colors
-      # class                   border  backgr. text    indic.   child_border
-	client.focused          $bg     $bg     $fg  $bg       $bg
-	client.focused_inactive $bl     $bg     $fg  $bg       $bl
-	client.unfocused        $bl     $bg     $fg  $bg       $bl
-	client.urgent           $bg     $bg     $fg  $bg       $bg
-	client.placeholder      $bl     $bg     $fg  $bg       $bl
-
+# 	COLORS STUFF
+#	class                   border  backgr. text     indic.    child_border
+	client.focused          $bl     $bg     $fg      $bg       $bl
+	client.focused_inactive $bs     $bg     $fg      $bg       $bs
+	client.unfocused        $bs     $bg     $fg      $bg       $bs
+	client.urgent           #2f343a #900000 #ffffff  #900000   #900000
+	client.placeholder      $bs     $bg     $fg      $bg       $bs
 	client.background       $bg
 
 #############################
