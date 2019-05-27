@@ -67,7 +67,7 @@ height = 48
 #offset-y = 0%
 bottom = false
 fixed-center = true
-line-size = 2
+line-size = 4
 dpi-x = 125
 dpi-y = 125
 tray-position = right
@@ -156,14 +156,6 @@ label-urgent-foreground = #FF0000
 
 
 ;=====================LEFT=====================
-[module/data]
-type = custom/script
-exec = ~/.config/polybar/data.sh
-interval = 2
-format-prefix = " data "
-format-background = ${color.shade3}
-format-padding = 2
-
 
 [module/temperature]
 type = internal/temperature
@@ -178,7 +170,7 @@ label-warn = %temperature-c%
 label-warn-foreground = #f00
 format-background = ${color.shade3}
 format-padding = 2
-
+format-underline = ${color.shade7}
 
 [module/nvidia]
 type = custom/script
@@ -187,7 +179,16 @@ interval = 2
 format-prefix = " gpu "
 format-background = ${color.shade3}
 format-padding = 2
+format-underline = ${color.shade7}
 
+[module/data]
+type = custom/script
+exec = ~/.config/polybar/data.sh
+interval = 2
+format-prefix = " data "
+format-background = ${color.shade3}
+format-padding = 2
+format-underline = ${color.shade7}
 
 [module/xwindow]
 type = internal/xwindow
@@ -195,6 +196,7 @@ type = internal/xwindow
 label = %title:0:30:...%  %{B- -o -u}
 label-padding=2
 ;label-foreground = ${color.shade7}
+
 
 
 ;=====================CENTER=====================
@@ -225,8 +227,9 @@ type = custom/script
 exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 60
 format-padding = 2
-format-background = ${color.shade6}
+format-background = ${color.shade7}
 label-font = 1
+format-underline = ${color.shade3}
 
 [module/filesystem]
 type = internal/fs
@@ -236,24 +239,26 @@ fixed-values = true
 label-mounted = %used%/%total%
 format-mounted = <label-mounted>
 format-mounted-prefix = " " 
-format-mounted-background = ${color.shade6}
+format-mounted-background = ${color.shade7}
 format-mounted-padding = 2
+format-mounted-underline = ${color.shade3}
 
 [module/pkg]
 type = custom/script
 exec =  ~/.config/polybar/updates.sh
-format-background = ${color.shade6}
+format-background = ${color.shade7}
 format-padding = 2
 tail = true
+format-underline = ${color.shade3}
 
 [module/volume]
 type = internal/alsa
 format-volume = <ramp-volume> <label-volume>
 format-volume-padding = 2
-format-volume-background = ${color.shade6}
+format-volume-background = ${color.shade7}
 label-volume = %percentage%%
 label-muted = "婢"
-label-muted-background = ${color.shade6}
+label-muted-background = ${color.shade7}
 label-muted-padding = 2
 
 ramp-volume-0 = 奄
@@ -263,6 +268,7 @@ ramp-volume-3 = 奔
 ramp-volume-4 = 墳
 ramp-volume-5 = 墳
 ramp-volume-6 = 墳
+format-volume-underline = ${color.shade3}
 
 
 
@@ -270,7 +276,7 @@ ramp-volume-6 = 墳
 type = custom/text
 content = 襤
 content-padding = 2
-content-background = ${color.shade7}
+content-background = ${color.shade8}
 content-foreground = ${color.fg}
 click-left = ~/.config/polybar/pmenu_1
 click-right = ~/.config/polybar/pmenu_1
@@ -294,7 +300,7 @@ type = custom/text
 content = 
 content-padding = 2
 ;content-foreground = ${color.fg-alt}
-click-left = xdg-open https://www.reddit.com/
+click-left = xdg-open https://www.reddit.com/r/unixporn/
 
 [module/facebook]
 type = custom/text
