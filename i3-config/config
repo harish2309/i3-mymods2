@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Sans 11
+font xft:DroidSans 11
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -64,7 +64,7 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 #bindsym $mod+t exec --no-startup-id pkill compton
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 #bindsym $mod+t exec --no-startup-id exec ~/.config/polybar/draw.sh &
-bindsym $mod+t exec --no-startup-id uxterm -geometry 72x24+1500+750
+bindsym $mod+t exec --no-startup-id uxterm -geometry 76x24+1500+750
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -197,11 +197,12 @@ for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
+# for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Lxappearance"] floating enable 
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable 
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
@@ -223,6 +224,7 @@ for_window [class="Whatsie"] floating enable
 for_window [class="UXTerm"] floating enable
 for_window [class="Slack"] floating enable
 for_window [class="qBittorrent"] floating enable
+for_window [class="Bleachbit"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
