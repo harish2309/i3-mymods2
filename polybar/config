@@ -102,7 +102,7 @@ scroll-down = i3wm-wsprev
 ;== Module Location ========================================================
 modules-left = i3  temperature nvidia data pubip reddit youtube terminal xwindow 
 modules-center =   date
-modules-right =  compton networkspeedup weather filesystem volume powermenu  
+modules-right =  compton networkspeeddown weather filesystem volume powermenu  
 ;== Modules ========================================================
 
 
@@ -226,10 +226,10 @@ interval = 5
 format-prefix = "compton "
 format-padding = 2
 
-[module/networkspeedup]
+[module/networkspeeddown]
 type = internal/network
 interface = enp3s0
-label-connected = "down %upspeed:7%"
+label-connected = "down %downspeed:7%"
 format-connected = <label-connected>
 format-connected-background = ${color.shade7}
 ;format-connected-underline = ${color.shade3}
