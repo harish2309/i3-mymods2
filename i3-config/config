@@ -314,15 +314,15 @@ set_from_resource $bs i3wm.color1 #f0f0f0
 
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+# bindsym $mod+m bar mode toggle
 
 # 	COLORS STUFF
-#	class                   border  backgr. text     indic.    child_border
-	client.focused          $bl     $bg     $fg      $bg       $bl
-	client.focused_inactive $bs     $bg     $fg      $bg       $bs
-	client.unfocused        $bs     $bg     $fg      $bg       $bs
-	client.urgent           #2f343a #900000 #ffffff  #900000   #900000
-	client.placeholder      $bs     $bg     $fg      $bg       $bs
+#	class                   border      backgr. text     indic.    child_border
+	client.focused          $bl         $bg     $fg      $bl       $bl
+	client.focused_inactive #585858     $bg     $fg      $bg       #585858
+	client.unfocused        #585858     $bg     $fg      $bg       #585858
+	client.urgent           #2f343a     #900000 #ffffff  #900000   #900000
+	client.placeholder      $bl         $bg     $fg      $bl       $bl
 	client.background       $bg
 
 #############################
