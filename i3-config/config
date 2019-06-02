@@ -33,7 +33,10 @@ bindsym $mod+Return exec terminal
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+Shift+d exec --no-startup-id ~/dmen.sh
+
+# draw terminal 
+bindsym $mod+d exec --no-startup-id ~/.config/polybar/draw.sh 
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id rofi -show drun -lines 5 -columns 3 &
@@ -65,7 +68,7 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 #bindsym $mod+t exec --no-startup-id exec ~/.config/polybar/draw.sh &
 bindsym $mod+t exec --no-startup-id uxterm -geometry 76x24+1500+750
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -225,6 +228,8 @@ for_window [class="UXTerm"] floating enable
 for_window [class="Slack"] floating enable
 for_window [class="qBittorrent"] floating enable
 for_window [class="Bleachbit"] floating enable
+for_window [class="Uget-gtk"] floating enable
+
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -296,9 +301,10 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id telegram-desktop
-exec --no-startup-id whatsie
+#exec --no-startup-id whatsie
 exec --no-startup-id slack
 exec --no-startup-id qbittorrent
+exec --no-startup-id uget-gtk 
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
