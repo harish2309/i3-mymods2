@@ -1,5 +1,4 @@
-;==========================================================
-;
+;==========================================================;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
@@ -9,8 +8,7 @@
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
 ;
-;   Created By Aditya Shakya.
-;
+;   Created By Aditya Shakya.;
 ;==========================================================
 
 [color]
@@ -57,8 +55,6 @@ deep-orange = #f4511e
 brown = #6d4c41
 grey = #757575
 blue-gray = #546e7a
-
-
 ;==========================================================
 [bar/mainbar-i3]
 width = 100%
@@ -71,6 +67,7 @@ line-size = 4
 dpi-x = 125
 dpi-y = 125
 tray-position = right
+tray-background = ${xrdb:color0:#00ff00}
 ;tray-detached = false
 tray-maxsize = 32
 tray-offset-x = 0
@@ -82,22 +79,20 @@ enable-ipc = true
 background = ${xrdb:color0:#00ff00}
 foreground = ${color.fg} 
 ;module-margin = 1
-
+;==========================================================
+font-0 = "San Francisco Text:pixelsize=13;4"
+;font-1 = "Font Awesome 5 Brands:pixelsize=13;4"
+font-1 = "Weather Icons:size=13;4"
+font-2 = "Material Icons:size=13;4"
+font-3 = "Symbols Nerd Font:size=13;4"
 
 ;==========================================================
-font-0 = "Bitstream Vera Sans:pixelsize=12;4"
-font-1 = "Font Awesome 5 Brands:pixelsize=12;4"
-font-2 = "Weather Icons:size=12;4"
-font-3 = "Symbols Nerd Font:size=12;4"
-;==========================================================
-
 
 cursor-click = pointer
 ;cursor-scroll = ns-resize
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
-
 
 ;== Module Location ========================================================
 modules-left = i3  temperature nvidia data pubip reddit youtube terminal xwindow 
@@ -111,50 +106,46 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 ;pin-workspaces = true
-;wrapping-scroll = true
-;strip-wsnumbers = true
+wrapping-scroll = false
+strip-wsnumbers = true
 
 enable-click = true
 click-left = i3wm-wsprev
 
 label-mode = %mode%
-label-mode-padding = 1
+label-mode-padding = 2
 label-mode-foreground = ${color.fg}
 
-label-focused =  %name%
+label-focused = %icon%
 ;label-focused = 
-;label-focused = 
 
-label-indicator-padding = 1
+label-indicator-padding = 2
 label-indicator-background = #BBBBBB
 label-indicator-underline = #FF0000
 
 label-focused-foreground = ${color.fg}
-label-focused-padding = 1
+label-focused-padding = 2
 label-focused-background = ${color.shade2}
-;label-focused-underline = 
-;label-focused-overline= #FF0000
 
-label-unfocused =  %name%
+label-unfocused = %icon%
 ;label-unfocused = 
 label-unfocused-foreground = ${color.fg}
-label-unfocused-padding = 1
+label-unfocused-padding = 2
 
-label-visible = %name
-;label-visible = 
+label-visible = %icon%
 label-visible-foregroud = ${color.fg}
 label-visible-padding = 1
 label-visible-background = ${color.shade2}
 
-label-urgent =  %name%
+label-urgent = %icon%
 ;label-urgent = 
-;label-urgent = 
-;label-urgent = 
-;label-urgent = 
-label-urgent-padding = 1
+label-urgent-padding = 2
 label-urgent-foreground = #FF0000
 
-
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-default = 
 ;=====================LEFT=====================
 
 [module/temperature]
@@ -191,7 +182,7 @@ format-padding = 2
 type = custom/script
 exec = ~/.config/polybar/pub-ip.sh
 interval = 60
-format-prefix = " "
+format-prefix = " "
 format-background = ${color.shade3}
 format-padding = 2
 ;format-underline = ${color.shade7}
@@ -202,9 +193,6 @@ type = internal/xwindow
 label = ~ %title:0:30:...%  %{B- -o -u} ~
 label-padding= 2
 ;label-foreground = ${color.shade7}
-
-
-
 ;=====================CENTER=====================
 
 [module/date]
@@ -230,7 +218,7 @@ format-padding = 2
 [module/networkspeeddown]
 type = internal/network
 interface = enp3s0
-label-connected = "down %downspeed:7%"
+label-connected = " down %downspeed:7%"
 format-connected = <label-connected>
 format-connected-background = ${color.shade7}
 ;format-connected-underline = ${color.shade3}
@@ -275,8 +263,6 @@ ramp-volume-4 = 墳
 ramp-volume-5 = 墳
 ramp-volume-6 = 墳
 ;format-volume-underline = ${color.shade3}
-
-
 
 [module/powermenu]
 type = custom/text
@@ -328,8 +314,6 @@ content = 
 content-padding = 1
 ;content-foreground = ${color.fg-alt}
 click-left = /usr/bin/uxterm -geometry 72x24+2500+750
-
-
 ;=====================OTHER STUFF;=====================
 
 [module/mpd]
