@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:DroidSans 11
+font xft:Bitstream Vera Sans 11
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -39,18 +39,16 @@ bindsym $mod+Shift+d exec --no-startup-id ~/dmen.sh
 bindsym $mod+d exec --no-startup-id ~/.config/polybar/draw.sh 
 
 # launch categorized menu
-bindsym $mod+z exec --no-startup-id rofi -show drun -lines 5 -columns 3 &
+bindsym $mod+z exec --no-startup-id rofi -show drun -width 33 -lines 7 -columns 2 &
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
-
 # exec --no-startup-id volumeicon
 # bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 exec --no-startup-id pulseaudio --start 
 exec --no-startup-id pasystray
 bindsym $mod+Ctrl+m exec pavucontrol
-
 ################################################################################################
 
 # Screen brightness controls
@@ -59,7 +57,7 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec chromium &
+bindsym $mod+F2 exec chromium 
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -295,6 +293,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id ~/mpvbg.sh ~/Downloads/ShinyPlushEmperorpenguin.webm 
 exec --no-startup-id wal -R; sleep 1; compton -b --config ~/.config/compton.conf
+exec --no-startup-id ~/reload_dunst.sh
 exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -306,16 +305,16 @@ exec --no-startup-id slack
 exec --no-startup-id qbittorrent
 exec --no-startup-id uget-gtk 
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
+exec --no-startup-id orage
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Color palette used for the terminal ( ~/.Xresources file )
 
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
-set_from_resource $bl i3wm.color3 #f0f0f0
+set_from_resource $bl i3wm.color2 #f0f0f0
 set_from_resource $bs i3wm.color1 #f0f0f0
 
 
