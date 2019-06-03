@@ -85,10 +85,10 @@ foreground = ${color.fg}
 
 
 ;==========================================================
-font-0 = "Droid Sans:pixelsize=13;4"
-font-1 = "Font Awesome 5 Brands:pixelsize=13;4"
-font-2 = "Weather Icons:size=13;4"
-font-3 = "Symbols Nerd Font:size=13;4"
+font-0 = "Bitstream Vera Sans:pixelsize=12;4"
+font-1 = "Font Awesome 5 Brands:pixelsize=12;4"
+font-2 = "Weather Icons:size=12;4"
+font-3 = "Symbols Nerd Font:size=12;4"
 ;==========================================================
 
 
@@ -186,6 +186,7 @@ format-background = ${color.shade3}
 format-padding = 2
 ;format-underline = ${color.shade7}
 
+
 [module/pubip]
 type = custom/script
 exec = ~/.config/polybar/pub-ip.sh
@@ -241,7 +242,7 @@ exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 60
 format-padding = 2
 format-background = ${color.shade7}
-label-font = 1
+;label-font = 1
 ;format-underline = ${color.shade3}
 
 [module/filesystem]
@@ -479,5 +480,22 @@ format-background = ${color.shade7}
 format-padding = 1
 tail = true
 format-underline = ${color.shade3}
+
+[module/info-hackspeed]
+type = custom/script
+exec = ~/.config/polybar/info-hackspeed.sh
+format-background = ${color.shade3}
+format-padding = 2
+;format-underline = ${color.shade7}
+tail = true
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/popup-calendar.sh
+interval = 5
+click-left = ~/polybar-scripts/popup-calendar.sh --popup
+format-background = ${color.shade3}
+format-padding = 2
+;format-underline = ${color.shade7}
 
 ;== EOF ========================================================
