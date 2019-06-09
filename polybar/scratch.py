@@ -11,6 +11,7 @@ for leaf in i3.get_tree().scratchpad().leaves():
 	test.append(yolo)
 	count+=1
 if (count !=0 ):
-	print("Scratchpad:",count,"(",*test,")")
+#	print("Scratchpad:",count,"(",*test,")")
+	print("Scratchpad:",count,'(%s)' % ', '.join(map(str,test)))
 else:
 	print("Scratchpad:",count)
