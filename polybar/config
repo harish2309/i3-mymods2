@@ -55,6 +55,7 @@ deep-orange = #f4511e
 brown = #6d4c41
 grey = #757575
 blue-gray = #546e7a
+
 ;==========================================================
 [bar/mainbar-i3]
 width = 100%
@@ -79,13 +80,13 @@ enable-ipc = true
 background = ${xrdb:color0:#00ff00}
 foreground = ${color.fg} 
 ;module-margin = 1
-;==========================================================
-font-0 = "San Francisco Text:pixelsize=13;4"
-;font-1 = "Font Awesome 5 Brands:pixelsize=13;4"
-font-1 = "Weather Icons:size=13;4"
-font-2 = "Material Icons:size=13;4"
-font-3 = "Symbols Nerd Font:size=13;4"
 
+;==========================================================
+font-0 = "Droid Sans:pixelsize=13;4"
+;font-1 = "Font Awesome 5 Brands:pixelsize=13;5"
+font-1 = "Weather Icons:size=13;5"
+font-2 = "Material Icons:size=13;5"
+font-3 = "Symbols Nerd Font:size=13;5"
 ;==========================================================
 
 cursor-click = pointer
@@ -95,11 +96,12 @@ scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 ;== Module Location ========================================================
-modules-left = i3  temperature nvidia data pubip reddit youtube terminal xwindow 
+
+modules-left = i3  temperature nvidia data pubip xwindow scratch
 modules-center =   date
 modules-right =  compton networkspeeddown weather filesystem volume powermenu  
-;== Modules ========================================================
 
+;== Modules ========================================================
 
 [module/i3]
 type = internal/i3
@@ -118,14 +120,13 @@ label-mode-foreground = ${color.fg}
 
 label-focused = %icon%
 ;label-focused = 
+label-focused-foreground = ${color.fg}
+label-focused-padding = 2
+label-focused-background = ${color.shade2}
 
 label-indicator-padding = 2
 label-indicator-background = #BBBBBB
 label-indicator-underline = #FF0000
-
-label-focused-foreground = ${color.fg}
-label-focused-padding = 2
-label-focused-background = ${color.shade2}
 
 label-unfocused = %icon%
 ;label-unfocused = 
@@ -146,6 +147,7 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-default = 
+
 ;=====================LEFT=====================
 
 [module/temperature]
@@ -190,9 +192,18 @@ format-padding = 2
 [module/xwindow]
 type = internal/xwindow
 ;label = %title:0:30:...%
-label = ~ %title:0:30:...%  %{B- -o -u} ~
+label = %title:0:30:...%  %{B- -o -u}
 label-padding= 2
 ;label-foreground = ${color.shade7}
+
+[module/scratch]
+type = custom/script
+exec = ~/.config/polybar/scratch.py
+label-padding = 2
+label-foreground = #757575
+interval = 1 
+
+
 ;=====================CENTER=====================
 
 [module/date]
@@ -204,8 +215,8 @@ label-background = ${color.shade4}
 time =  %a %b %d, %I:%M %p 
 time-alt =  %m-%d-%Y
 
-
 ;=====================RIGHT=====================
+
 [module/compton]
 type = custom/script
 exec = ~/.config/polybar/compton.sh
@@ -314,6 +325,7 @@ content = 
 content-padding = 1
 ;content-foreground = ${color.fg-alt}
 click-left = /usr/bin/uxterm -geometry 72x24+2500+750
+
 ;=====================OTHER STUFF;=====================
 
 [module/mpd]
