@@ -99,7 +99,7 @@ scroll-down = i3wm-wsprev
 
 modules-left = i3  temperature nvidia data pubip xwindow scratch
 modules-center =   date
-modules-right =  compton networkspeeddown weather filesystem volume powermenu  
+modules-right =  compton unread_mail  networkspeeddown weather filesystem volume powermenu  
 
 ;== Modules ========================================================
 
@@ -216,6 +216,15 @@ time =  %a %b %d, %I:%M %p
 time-alt =  %m-%d-%Y
 
 ;=====================RIGHT=====================
+
+[module/unread_mail]
+type = custom/script
+;click-left=  thunderbird & ; you can set your own client
+format =  <label> unread
+exec = python3 ~/.config/polybar/UnseenMail.py
+interval = 100
+format-padding = 2
+
 
 [module/compton]
 type = custom/script
