@@ -1,3 +1,4 @@
+# ALL CREDITS GO TO https://github.com/JaikrishnaTS/i3-scratchpad-tools. THIS IS NOT MY CREATION. 
 #!/usr/bin/env python3
 
 import bisect
